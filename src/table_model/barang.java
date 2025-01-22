@@ -389,7 +389,7 @@ public class barang extends javax.swing.JFrame {
     
     int id = Integer.parseInt(tabmode.getValueAt(row, 0).toString());
     
-    for(int i = 0; i < 5; i++){
+    for(int i = 0; i < 8; i++){
         values[i] = tabmode.getValueAt(row, i+1).toString();
     }
     

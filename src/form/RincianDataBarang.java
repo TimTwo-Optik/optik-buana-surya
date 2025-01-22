@@ -19,32 +19,34 @@ import koneksi.koneksi;
  * @author sabdha
  */
 public class RincianDataBarang extends javax.swing.JFrame {
- private int id;
+    private int id;
     /**
      * Creates new form UbahBarang
      */
     public RincianDataBarang() {
         initComponents();
-        cbKategori.addItem("frame");
-        cbKategori.addItem("lensa");
-        cbKategori.addItem("aksesoris");
-//        kosong();
     }
-//protected void kosong(){ 
-//          txtkode.setText(""); 
-//          txtnama.setText(""); 
-//          cbKategori.setSelectedItem(""); 
-//          txtharga.setText(""); 
-//          txtstok.setText(""); 
-//      }
+
 public void setData(int id, String[] values) {
        this.id = id;
          
-        txtkode.setText(values[0]);
-        txtnama.setText(values[1]);
-        cbKategori.setSelectedItem(values[2]);
-        txtharga.setText(values[3]);
-        txtstok.setText(values[4]);
+       txtkode.setText(values[0]);
+       
+       if(values[1].equals("Frame")) {
+            cbkategori.setSelectedIndex(0);
+       } else if(values[1].equals("Lensa")){
+            cbkategori.setSelectedIndex(1);
+       } else {
+           cbkategori.setSelectedIndex(2);
+       }
+       
+       txtnama.setText(values[2]);
+       txtjenisataulensa.setText(values[3]);
+       txthargabeli.setText(values[4]);
+       txthargajual.setText(values[5]);
+       txtstok.setText(values[6]);
+       txtketerangan.setText(values[7]);
+               
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -62,18 +64,26 @@ public void setData(int id, String[] values) {
         roundedPanel1 = new custom_palette.RoundedPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        txtkode = new custom_palette.RoundedTextField();
-        txtnama = new custom_palette.RoundedTextField();
-        txtharga = new custom_palette.RoundedTextField();
-        txtstok = new custom_palette.RoundedTextField();
         btnubah = new custom_palette.RoundedButton();
         btnHapus = new custom_palette.RoundedButton();
-        cbKategori = new javax.swing.JComboBox<>();
+        jLabel5 = new javax.swing.JLabel();
+        txtkode = new custom_palette.RoundedTextField();
+        jLabel7 = new javax.swing.JLabel();
+        cbkategori = new javax.swing.JComboBox<>();
+        jLabel10 = new javax.swing.JLabel();
+        txtnama = new custom_palette.RoundedTextField();
+        jLabel11 = new javax.swing.JLabel();
+        txtjenisataulensa = new custom_palette.RoundedTextField();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        txthargabeli = new custom_palette.RoundedTextField();
+        jLabel8 = new javax.swing.JLabel();
+        txthargajual = new custom_palette.RoundedTextField();
+        jLabel9 = new javax.swing.JLabel();
+        txtstok = new custom_palette.RoundedTextField();
+        jLabel13 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtketerangan = new javax.swing.JTextArea();
         cancelButton = new custom_palette.RoundedButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -108,56 +118,6 @@ public void setData(int id, String[] values) {
         jLabel4.setText("RINCIAN DATA BARANG");
         roundedPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(503, 38, 412, 38));
 
-        jLabel5.setBackground(new java.awt.Color(238, 231, 218));
-        jLabel5.setFont(new java.awt.Font("Inter", 0, 16)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(238, 231, 218));
-        jLabel5.setText("Kode Barang");
-        roundedPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 171, 111, 21));
-
-        jLabel6.setBackground(new java.awt.Color(238, 231, 218));
-        jLabel6.setFont(new java.awt.Font("Inter", 0, 16)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(238, 231, 218));
-        jLabel6.setText("Nama Barang ");
-        roundedPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 236, 111, 21));
-
-        jLabel7.setBackground(new java.awt.Color(238, 231, 218));
-        jLabel7.setFont(new java.awt.Font("Inter", 0, 16)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(238, 231, 218));
-        jLabel7.setText("Kategori");
-        roundedPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 301, 111, 21));
-
-        jLabel8.setBackground(new java.awt.Color(238, 231, 218));
-        jLabel8.setFont(new java.awt.Font("Inter", 0, 16)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(238, 231, 218));
-        jLabel8.setText("Harga");
-        roundedPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 366, 111, 21));
-
-        jLabel9.setBackground(new java.awt.Color(238, 231, 218));
-        jLabel9.setFont(new java.awt.Font("Inter", 0, 16)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(238, 231, 218));
-        jLabel9.setText("Stok");
-        roundedPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 431, 111, 21));
-
-        txtkode.setBackground(new java.awt.Color(238, 231, 218));
-        txtkode.setLineColor(new java.awt.Color(238, 231, 218));
-        txtkode.setSelectionColor(new java.awt.Color(238, 231, 218));
-        roundedPanel1.add(txtkode, new org.netbeans.lib.awtextra.AbsoluteConstraints(694, 171, 87, 21));
-
-        txtnama.setBackground(new java.awt.Color(238, 231, 218));
-        txtnama.setLineColor(new java.awt.Color(238, 231, 218));
-        txtnama.setSelectionColor(new java.awt.Color(238, 231, 218));
-        roundedPanel1.add(txtnama, new org.netbeans.lib.awtextra.AbsoluteConstraints(694, 236, 173, 21));
-
-        txtharga.setBackground(new java.awt.Color(238, 231, 218));
-        txtharga.setLineColor(new java.awt.Color(238, 231, 218));
-        txtharga.setSelectionColor(new java.awt.Color(238, 231, 218));
-        roundedPanel1.add(txtharga, new org.netbeans.lib.awtextra.AbsoluteConstraints(694, 366, 173, 21));
-
-        txtstok.setBackground(new java.awt.Color(238, 231, 218));
-        txtstok.setLineColor(new java.awt.Color(238, 231, 218));
-        txtstok.setSelectionColor(new java.awt.Color(238, 231, 218));
-        roundedPanel1.add(txtstok, new org.netbeans.lib.awtextra.AbsoluteConstraints(694, 431, 87, 21));
-
         btnubah.setForeground(new java.awt.Color(136, 171, 142));
         btnubah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/ic_baseline-edit.png"))); // NOI18N
         btnubah.setText("Ubah");
@@ -189,7 +149,125 @@ public void setData(int id, String[] values) {
         });
         roundedPanel1.add(btnHapus, new org.netbeans.lib.awtextra.AbsoluteConstraints(775, 508, 125, 43));
 
-        roundedPanel1.add(cbKategori, new org.netbeans.lib.awtextra.AbsoluteConstraints(693, 301, 173, 21));
+        jLabel5.setBackground(new java.awt.Color(238, 231, 218));
+        jLabel5.setFont(new java.awt.Font("Inter", 0, 16)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(238, 231, 218));
+        jLabel5.setText("Kode Barang");
+        roundedPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 96, 111, 21));
+
+        txtkode.setBackground(new java.awt.Color(238, 231, 218));
+        txtkode.setFont(new java.awt.Font("Inter", 0, 16)); // NOI18N
+        txtkode.setLineColor(new java.awt.Color(238, 231, 218));
+        txtkode.setSelectionColor(new java.awt.Color(238, 231, 218));
+        roundedPanel1.add(txtkode, new org.netbeans.lib.awtextra.AbsoluteConstraints(694, 96, 173, 21));
+
+        jLabel7.setBackground(new java.awt.Color(238, 231, 218));
+        jLabel7.setFont(new java.awt.Font("Inter", 0, 16)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(238, 231, 218));
+        jLabel7.setText("Kategori");
+        roundedPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 137, 111, 21));
+
+        cbkategori.setFont(new java.awt.Font("Inter", 0, 16)); // NOI18N
+        cbkategori.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Frame", "Lensa", "Lainnya" }));
+        cbkategori.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbkategoriActionPerformed(evt);
+            }
+        });
+        roundedPanel1.add(cbkategori, new org.netbeans.lib.awtextra.AbsoluteConstraints(696, 137, 173, 21));
+
+        jLabel10.setBackground(new java.awt.Color(238, 231, 218));
+        jLabel10.setFont(new java.awt.Font("Inter", 0, 16)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(238, 231, 218));
+        jLabel10.setText("Nama/Merk");
+        roundedPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 179, 111, 21));
+
+        txtnama.setBackground(new java.awt.Color(238, 231, 218));
+        txtnama.setFont(new java.awt.Font("Inter", 0, 16)); // NOI18N
+        txtnama.setLineColor(new java.awt.Color(238, 231, 218));
+        txtnama.setSelectionColor(new java.awt.Color(238, 231, 218));
+        txtnama.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtnamaActionPerformed(evt);
+            }
+        });
+        roundedPanel1.add(txtnama, new org.netbeans.lib.awtextra.AbsoluteConstraints(694, 179, 173, 21));
+
+        jLabel11.setBackground(new java.awt.Color(238, 231, 218));
+        jLabel11.setFont(new java.awt.Font("Inter", 0, 16)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(238, 231, 218));
+        jLabel11.setText("Jenis Barang/");
+        jLabel11.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        roundedPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 217, 110, 21));
+
+        txtjenisataulensa.setBackground(new java.awt.Color(238, 231, 218));
+        txtjenisataulensa.setFont(new java.awt.Font("Inter", 0, 16)); // NOI18N
+        txtjenisataulensa.setLineColor(new java.awt.Color(238, 231, 218));
+        txtjenisataulensa.setSelectionColor(new java.awt.Color(238, 231, 218));
+        roundedPanel1.add(txtjenisataulensa, new org.netbeans.lib.awtextra.AbsoluteConstraints(694, 225, 173, 21));
+
+        jLabel6.setBackground(new java.awt.Color(238, 231, 218));
+        jLabel6.setFont(new java.awt.Font("Inter", 0, 16)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(238, 231, 218));
+        jLabel6.setText("Lensa");
+        jLabel6.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        roundedPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 235, 110, 21));
+
+        jLabel12.setBackground(new java.awt.Color(238, 231, 218));
+        jLabel12.setFont(new java.awt.Font("Inter", 0, 16)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(238, 231, 218));
+        jLabel12.setText("Harga Beli");
+        roundedPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 263, 111, 21));
+
+        txthargabeli.setBackground(new java.awt.Color(238, 231, 218));
+        txthargabeli.setFont(new java.awt.Font("Inter", 0, 16)); // NOI18N
+        txthargabeli.setLineColor(new java.awt.Color(238, 231, 218));
+        txthargabeli.setSelectionColor(new java.awt.Color(238, 231, 218));
+        txthargabeli.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txthargabeliActionPerformed(evt);
+            }
+        });
+        roundedPanel1.add(txthargabeli, new org.netbeans.lib.awtextra.AbsoluteConstraints(694, 263, 173, 21));
+
+        jLabel8.setBackground(new java.awt.Color(238, 231, 218));
+        jLabel8.setFont(new java.awt.Font("Inter", 0, 16)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(238, 231, 218));
+        jLabel8.setText("Harga Jual");
+        roundedPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 305, 111, 21));
+
+        txthargajual.setBackground(new java.awt.Color(238, 231, 218));
+        txthargajual.setFont(new java.awt.Font("Inter", 0, 16)); // NOI18N
+        txthargajual.setLineColor(new java.awt.Color(238, 231, 218));
+        txthargajual.setSelectionColor(new java.awt.Color(238, 231, 218));
+        roundedPanel1.add(txthargajual, new org.netbeans.lib.awtextra.AbsoluteConstraints(694, 305, 173, 21));
+
+        jLabel9.setBackground(new java.awt.Color(238, 231, 218));
+        jLabel9.setFont(new java.awt.Font("Inter", 0, 16)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(238, 231, 218));
+        jLabel9.setText("Stok");
+        roundedPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 352, 111, 21));
+
+        txtstok.setBackground(new java.awt.Color(238, 231, 218));
+        txtstok.setFont(new java.awt.Font("Inter", 0, 16)); // NOI18N
+        txtstok.setLineColor(new java.awt.Color(238, 231, 218));
+        txtstok.setSelectionColor(new java.awt.Color(238, 231, 218));
+        roundedPanel1.add(txtstok, new org.netbeans.lib.awtextra.AbsoluteConstraints(694, 352, 173, 21));
+
+        jLabel13.setBackground(new java.awt.Color(238, 231, 218));
+        jLabel13.setFont(new java.awt.Font("Inter", 0, 16)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(238, 231, 218));
+        jLabel13.setText("Keterangan");
+        roundedPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 394, 111, 21));
+
+        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+
+        txtketerangan.setColumns(20);
+        txtketerangan.setRows(5);
+        jScrollPane1.setViewportView(txtketerangan);
+
+        roundedPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(694, 400, 173, -1));
 
         jPanel1.add(roundedPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(137, 118, 1006, 583));
 
@@ -230,14 +308,18 @@ public void setData(int id, String[] values) {
     private void btnubahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnubahActionPerformed
         Connection conn = new koneksi().getConnection();
 
-        String sql = "update barang set nama=?,kategori=?,harga=?,stok=? where kode_barang='"+txtkode.getText()+"'";
+        String sql = "update barang set kode_barang=?, kategori=?, nama=?, jenis_atau_lensa=?, harga_beli=?, harga_jual=?, stok=?, keterangan=? where id=" + id;
 
         try{
             PreparedStatement stat = conn.prepareStatement(sql);
-            stat.setString(1, txtnama.getText());
-            stat.setString(2, cbKategori.getSelectedItem().toString());
-            stat.setString(3, txtharga.getText());
-            stat.setString(4, txtstok.getText());
+            stat.setString(1, txtkode.getText());
+            stat.setString(2, cbkategori.getSelectedItem().toString());
+            stat.setString(3, txtnama.getText());
+            stat.setString(4, txtjenisataulensa.getText());
+            stat.setFloat(5, Float.parseFloat(txthargabeli.getText()));
+            stat.setFloat(6, Float.parseFloat(txthargajual.getText()));
+            stat.setInt(7, Integer.parseInt(txtstok.getText()));
+            stat.setString(8, txtketerangan.getText());
             stat.executeUpdate();
             JOptionPane.showMessageDialog(null, "data berhasil diubah");
 //            kosong();
@@ -342,6 +424,18 @@ public void setData(int id, String[] values) {
 }
 
     }//GEN-LAST:event_btnHapusActionPerformed
+
+    private void cbkategoriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbkategoriActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbkategoriActionPerformed
+
+    private void txtnamaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnamaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtnamaActionPerformed
+
+    private void txthargabeliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txthargabeliActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txthargabeliActionPerformed
 private void deleteRelatedPembelian(Connection conn, int idBarang) throws SQLException {
     String deletePembelianSql = "DELETE FROM pembelian WHERE id_barang = ?";
     try (PreparedStatement deletePembelianStat = conn.prepareStatement(deletePembelianSql)) {
@@ -405,8 +499,12 @@ private void deleteRelatedDetailPenjualan(Connection conn, int idBarang) throws 
     private custom_palette.RoundedButton btnHapus;
     private custom_palette.RoundedButton btnubah;
     private custom_palette.RoundedButton cancelButton;
-    private javax.swing.JComboBox<String> cbKategori;
+    private javax.swing.JComboBox<String> cbkategori;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -416,9 +514,13 @@ private void deleteRelatedDetailPenjualan(Connection conn, int idBarang) throws 
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private custom_palette.RoundedPanel roundedPanel1;
-    private custom_palette.RoundedTextField txtharga;
+    private custom_palette.RoundedTextField txthargabeli;
+    private custom_palette.RoundedTextField txthargajual;
+    private custom_palette.RoundedTextField txtjenisataulensa;
+    private javax.swing.JTextArea txtketerangan;
     private custom_palette.RoundedTextField txtkode;
     private custom_palette.RoundedTextField txtnama;
     private custom_palette.RoundedTextField txtstok;
