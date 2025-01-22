@@ -3,10 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/sabdha/Documents/NetBeansProjects/optik-buana/src/table_model/barang.java</file>
-            <file>file:/C:/Users/sabdha/Documents/NetBeansProjects/optik-buana/src/form/TambahBarang.java</file>
-            <file>file:/C:/Users/sabdha/Documents/NetBeansProjects/optik-buana/src/form/RincianDataBarang.java</file>
-            <file>file:/C:/Users/sabdha/Documents/NetBeansProjects/optik-buana/src/table_model/karyawan.java</file>
+            <file>file:/D:/Latihan%20Program/Java/optik-buana-surya/src/form/RincianDataBarang.java</file>
+            <file>file:/D:/Latihan%20Program/Java/optik-buana-surya/src/transaksi/RincianDataPenjualan.java</file>
+            <file>file:/D:/Latihan%20Program/Java/optik-buana-surya/src/table_model/barang.java</file>
+            <file>file:/D:/Latihan%20Program/Java/optik-buana-surya/src/form/TambahBarang.java</file>
+            <file>file:/D:/Latihan%20Program/Java/optik-buana-surya/src/table_model/pelanggan.java</file>
+            <file>file:/D:/Latihan%20Program/Java/optik-buana-surya/src/view/home.java</file>
+            <file>file:/D:/Latihan%20Program/Java/optik-buana-surya/src/table_model/karyawan.java</file>
         </group>
     </open-files>
 </project-private>
