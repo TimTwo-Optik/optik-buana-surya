@@ -52,12 +52,12 @@ public class barang extends javax.swing.JFrame {
  protected void dataTable(){
       Connection conn = new koneksi().getConnection();
         
-        Object[] Baris ={"No","Kode Barang","Nama Barang","Kategori","Harga", "Stok", "Aksi"};
+        Object[] Baris ={"No", "Kode Barang", "Nama/Merk", "Kategori", "Jenis Barang/Lensa", "Keterangan", "Harga Jual", "Harga Beli", "Stok", "Aksi"};
         tabmode = new DefaultTableModel(null, Baris);
         String cariItem = txtcari.getText();
         
         try {
-            String sql = "SELECT * FROM barang WHERE kode_barang LIKE ? OR nama LIKE ? order by id asc";
+            String sql = "SELECT *  FROM barang WHERE kode_barang LIKE ? OR nama LIKE ? order by id asc";
             PreparedStatement stat = conn.prepareStatement(sql);
             stat.setString(1, "%" + cariItem + "%");
             stat.setString(2, "%" + cariItem + "%");
@@ -70,7 +70,10 @@ public class barang extends javax.swing.JFrame {
                     hasil.getString(3),
                     hasil.getString(4),
                     hasil.getString(5),
-                    hasil.getString(6)
+                    hasil.getString(6),
+                    hasil.getString(7),
+                    hasil.getString(8),
+                    hasil.getString(9)
                 });
             }  
             tablebarang.setModel(tabmode);
@@ -197,17 +200,17 @@ public class barang extends javax.swing.JFrame {
 
         tablebarang.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4", "Title 5", "Title 6", "Title 7", "Title 8"
+                "Title 1", "Title 2", "Title 3", "Title 4", "Title 5", "Title 6", "Title 7", "Title 8", "null", "Title 10"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -370,8 +373,8 @@ public class barang extends javax.swing.JFrame {
             }
         };
         
-        tablebarang.getColumnModel().getColumn(6).setCellRenderer(new TableActionCellRender());
-        tablebarang.getColumnModel().getColumn(6).setCellEditor(new TableActionCellEditor(event));
+        tablebarang.getColumnModel().getColumn(9).setCellRenderer(new TableActionCellRender());
+        tablebarang.getColumnModel().getColumn(9).setCellEditor(new TableActionCellEditor(event));
         tablebarang.setDefaultRenderer(String.class, new TableActionCellRender());
     }
    private void initializeComboBox() {
@@ -382,7 +385,7 @@ public class barang extends javax.swing.JFrame {
         searchFilter.setRenderer(new ComboBoxListCellRender(targetIndices));
     }
   private void sendData(int row) {
-    String[] values = new String[5];
+    String[] values = new String[8];
     
     int id = Integer.parseInt(tabmode.getValueAt(row, 0).toString());
     
@@ -428,7 +431,7 @@ public class barang extends javax.swing.JFrame {
 
             Connection conn = new koneksi().getConnection();
 
-            Object[] Baris ={"No","Kode Barang","Nama Barang","Kategori","Harga", "Stok", "Aksi"};
+            Object[] Baris ={"No","Kode Barang","Nama/Merk","Kategori","Jenis Barang/Lensa", "Keterangan", "Harga Jual","Harga Beli","Stok","Aksi"};
             tabmode = new DefaultTableModel(null, Baris);
 
             try {
@@ -441,12 +444,15 @@ public class barang extends javax.swing.JFrame {
                 ResultSet hasil = stat.executeQuery();
                 while (hasil.next()){
                     tabmode.addRow(new Object[]{
-                        hasil.getString(1),
-                        hasil.getString(2),
-                        hasil.getString(3),
-                        hasil.getString(4),
-                        hasil.getString(5),
-                        hasil.getString(6)
+                    hasil.getString(1),
+                    hasil.getString(2),
+                    hasil.getString(3),
+                    hasil.getString(4),
+                    hasil.getString(5),
+                    hasil.getString(6),
+                    hasil.getString(7),
+                    hasil.getString(8),
+                    hasil.getString(9)
                     });
                 }
                 tablebarang.setModel(tabmode);
