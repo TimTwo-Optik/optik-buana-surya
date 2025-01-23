@@ -7,6 +7,7 @@ package form;
 import java.awt.Toolkit;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
 import javax.swing.JFrame;
@@ -31,6 +32,8 @@ public class TambahPelanggan extends javax.swing.JFrame {
     
     protected void kosong() {
         nama.setText("");
+        btjeniskelamin.clearSelection();
+        usia.setText("");
         kontak.setText("");
         alamat.setText("");
 
@@ -45,9 +48,12 @@ public class TambahPelanggan extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btjeniskelamin = new javax.swing.ButtonGroup();
+        jScrollPane3 = new javax.swing.JScrollPane();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        cancelButton = new custom_palette.RoundedButton();
         roundedPanel1 = new custom_palette.RoundedPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -59,12 +65,45 @@ public class TambahPelanggan extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         alamat = new javax.swing.JTextArea();
         addDataButton = new custom_palette.RoundedButton();
-        cancelButton = new custom_palette.RoundedButton();
+        jLabel8 = new javax.swing.JLabel();
+        usia = new custom_palette.RoundedTextField();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        roundedPanel2 = new custom_palette.RoundedPanel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        RSPH = new custom_palette.RoundedTextField();
+        jLabel14 = new javax.swing.JLabel();
+        RCYL = new custom_palette.RoundedTextField();
+        jLabel15 = new javax.swing.JLabel();
+        RAXIS = new custom_palette.RoundedTextField();
+        jLabel16 = new javax.swing.JLabel();
+        RADD = new custom_palette.RoundedTextField();
+        jLabel17 = new javax.swing.JLabel();
+        RPD = new custom_palette.RoundedTextField();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        LSPH = new custom_palette.RoundedTextField();
+        LCYL = new custom_palette.RoundedTextField();
+        LAXIS = new custom_palette.RoundedTextField();
+        LADD = new custom_palette.RoundedTextField();
+        LPD = new custom_palette.RoundedTextField();
+        rblaki = new javax.swing.JRadioButton();
+        rbperempuan = new javax.swing.JRadioButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jScrollPane3.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane3.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+
         jPanel1.setBackground(new java.awt.Color(242, 241, 235));
+        jPanel1.setPreferredSize(new java.awt.Dimension(1280, 1150));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/logo-user-2.png"))); // NOI18N
@@ -74,75 +113,6 @@ public class TambahPelanggan extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(142, 175, 148));
         jLabel2.setText("Manajemen Data Pelanggan");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(116, 47, 290, 40));
-
-        roundedPanel1.setBackground(new java.awt.Color(136, 171, 142));
-        roundedPanel1.setForeground(new java.awt.Color(136, 171, 142));
-        roundedPanel1.setCornerRadius(30);
-        roundedPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel3.setFont(new java.awt.Font("Inter", 1, 32)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(238, 231, 218));
-        jLabel3.setText("Tambah Data Pelanggan");
-        roundedPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(485, 38, 420, 80));
-
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/logo-pelanggan-image.png"))); // NOI18N
-        roundedPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(88, 148, -1, -1));
-
-        jLabel5.setFont(new java.awt.Font("Inter", 0, 16)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(238, 231, 218));
-        jLabel5.setText("Nama");
-        roundedPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(544, 163, 90, -1));
-
-        jLabel6.setFont(new java.awt.Font("Inter", 0, 16)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(238, 231, 218));
-        jLabel6.setText("Kontak");
-        roundedPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(544, 203, 100, -1));
-
-        jLabel7.setFont(new java.awt.Font("Inter", 0, 16)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(238, 231, 218));
-        jLabel7.setText("Alamat");
-        roundedPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 260, 100, -1));
-
-        nama.setBackground(new java.awt.Color(238, 231, 218));
-        nama.setFont(new java.awt.Font("Inter", 0, 14)); // NOI18N
-        nama.setLineColor(new java.awt.Color(238, 231, 218));
-        roundedPanel1.add(nama, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 163, 232, -1));
-
-        kontak.setBackground(new java.awt.Color(238, 231, 218));
-        kontak.setFont(new java.awt.Font("Inter", 0, 14)); // NOI18N
-        kontak.setLineColor(new java.awt.Color(238, 231, 218));
-        kontak.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                kontakActionPerformed(evt);
-            }
-        });
-        roundedPanel1.add(kontak, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 203, 232, -1));
-
-        alamat.setBackground(new java.awt.Color(238, 231, 218));
-        alamat.setColumns(20);
-        alamat.setFont(new java.awt.Font("Inter", 0, 14)); // NOI18N
-        alamat.setRows(5);
-        alamat.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        jScrollPane1.setViewportView(alamat);
-
-        roundedPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 260, 232, -1));
-
-        addDataButton.setForeground(new java.awt.Color(136, 171, 142));
-        addDataButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/material-symbols_tambah.png"))); // NOI18N
-        addDataButton.setText("Tambah");
-        addDataButton.setColor(new java.awt.Color(238, 231, 218));
-        addDataButton.setColorClick(new java.awt.Color(190, 184, 174));
-        addDataButton.setColorOver(new java.awt.Color(214, 207, 196));
-        addDataButton.setcornerRadius(15);
-        addDataButton.setFont(new java.awt.Font("Inter", 1, 14)); // NOI18N
-        addDataButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addDataButtonActionPerformed(evt);
-            }
-        });
-        roundedPanel1.add(addDataButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 508, 125, 43));
-
-        jPanel1.add(roundedPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(137, 118, 1006, 583));
 
         cancelButton.setForeground(new java.awt.Color(238, 231, 218));
         cancelButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/material-symbols_batal.png"))); // NOI18N
@@ -157,30 +127,302 @@ public class TambahPelanggan extends javax.swing.JFrame {
                 cancelButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(cancelButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1118, 744, 130, 49));
+        jPanel1.add(cancelButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1102, 1050, 130, 49));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 832));
+        roundedPanel1.setBackground(new java.awt.Color(136, 171, 142));
+        roundedPanel1.setForeground(new java.awt.Color(136, 171, 142));
+        roundedPanel1.setCornerRadius(30);
+        roundedPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel3.setFont(new java.awt.Font("Inter", 1, 32)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(238, 231, 218));
+        jLabel3.setText("Tambah Data Pelanggan");
+        roundedPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(566, 87, 400, 38));
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/logo-pelanggan-image.png"))); // NOI18N
+        roundedPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(114, 90, -1, -1));
+
+        jLabel5.setFont(new java.awt.Font("Inter", 0, 16)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(238, 231, 218));
+        jLabel5.setText("Nama");
+        roundedPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(642, 160, 90, -1));
+
+        jLabel6.setFont(new java.awt.Font("Inter", 0, 16)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(238, 231, 218));
+        jLabel6.setText("Kontak");
+        roundedPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(642, 301, 100, -1));
+
+        jLabel7.setFont(new java.awt.Font("Inter", 0, 16)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(238, 231, 218));
+        jLabel7.setText("Alamat");
+        roundedPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(642, 348, 100, -1));
+
+        nama.setBackground(new java.awt.Color(238, 231, 218));
+        nama.setFont(new java.awt.Font("Inter", 0, 14)); // NOI18N
+        nama.setLineColor(new java.awt.Color(238, 231, 218));
+        roundedPanel1.add(nama, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 160, 225, 22));
+
+        kontak.setBackground(new java.awt.Color(238, 231, 218));
+        kontak.setFont(new java.awt.Font("Inter", 0, 16)); // NOI18N
+        kontak.setLineColor(new java.awt.Color(238, 231, 218));
+        roundedPanel1.add(kontak, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 301, 225, 22));
+
+        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+
+        alamat.setBackground(new java.awt.Color(238, 231, 218));
+        alamat.setColumns(20);
+        alamat.setFont(new java.awt.Font("Inter", 0, 14)); // NOI18N
+        alamat.setRows(5);
+        alamat.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        jScrollPane1.setViewportView(alamat);
+
+        roundedPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 348, 225, 96));
+
+        addDataButton.setForeground(new java.awt.Color(136, 171, 142));
+        addDataButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/material-symbols_tambah.png"))); // NOI18N
+        addDataButton.setText("Tambah");
+        addDataButton.setColor(new java.awt.Color(238, 231, 218));
+        addDataButton.setColorClick(new java.awt.Color(190, 184, 174));
+        addDataButton.setColorOver(new java.awt.Color(214, 207, 196));
+        addDataButton.setcornerRadius(15);
+        addDataButton.setFont(new java.awt.Font("Inter", 1, 14)); // NOI18N
+        addDataButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addDataButtonActionPerformed(evt);
+            }
+        });
+        roundedPanel1.add(addDataButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(569, 828, 125, 43));
+
+        jLabel8.setFont(new java.awt.Font("Inter", 0, 16)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(238, 231, 218));
+        jLabel8.setText("Jenis Kelamin");
+        roundedPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(642, 207, 130, -1));
+
+        usia.setBackground(new java.awt.Color(238, 231, 218));
+        usia.setFont(new java.awt.Font("Inter", 0, 16)); // NOI18N
+        usia.setLineColor(new java.awt.Color(238, 231, 218));
+        roundedPanel1.add(usia, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 254, 225, 22));
+
+        jLabel9.setFont(new java.awt.Font("Inter", 0, 16)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(238, 231, 218));
+        jLabel9.setText("Usia");
+        roundedPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(642, 254, 130, -1));
+
+        jLabel10.setFont(new java.awt.Font("Inter", 1, 25)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(238, 231, 218));
+        jLabel10.setText(" Rincian Ukuran Mata Pelanggan");
+        roundedPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 490, 420, 38));
+
+        roundedPanel2.setBackground(new java.awt.Color(238, 231, 218));
+        roundedPanel2.setForeground(new java.awt.Color(238, 231, 218));
+        roundedPanel2.setCornerRadius(70);
+        roundedPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel11.setFont(new java.awt.Font("Inter", 1, 24)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(142, 175, 148));
+        jLabel11.setText("R");
+        roundedPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(86, 62, 30, -1));
+
+        jLabel12.setFont(new java.awt.Font("Inter", 1, 24)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(142, 175, 148));
+        jLabel12.setText("L");
+        roundedPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(86, 140, 30, -1));
+
+        jLabel13.setFont(new java.awt.Font("Inter", 1, 16)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(142, 175, 148));
+        jLabel13.setText("SPH");
+        roundedPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(256, 45, 40, -1));
+
+        RSPH.setBackground(new java.awt.Color(136, 171, 142));
+        RSPH.setForeground(new java.awt.Color(238, 231, 218));
+        RSPH.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        RSPH.setFont(new java.awt.Font("Inter", 1, 16)); // NOI18N
+        RSPH.setLineColor(new java.awt.Color(136, 171, 142));
+        roundedPanel2.add(RSPH, new org.netbeans.lib.awtextra.AbsoluteConstraints(239, 66, 67, 23));
+
+        jLabel14.setFont(new java.awt.Font("Inter", 1, 16)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(142, 175, 148));
+        jLabel14.setText("CYL");
+        roundedPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(358, 45, 40, -1));
+
+        RCYL.setBackground(new java.awt.Color(136, 171, 142));
+        RCYL.setForeground(new java.awt.Color(238, 231, 218));
+        RCYL.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        RCYL.setFont(new java.awt.Font("Inter", 1, 16)); // NOI18N
+        RCYL.setLineColor(new java.awt.Color(136, 171, 142));
+        roundedPanel2.add(RCYL, new org.netbeans.lib.awtextra.AbsoluteConstraints(339, 66, 67, 23));
+
+        jLabel15.setFont(new java.awt.Font("Inter", 1, 16)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(142, 175, 148));
+        jLabel15.setText("AXIS");
+        roundedPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(452, 45, 50, -1));
+
+        RAXIS.setBackground(new java.awt.Color(136, 171, 142));
+        RAXIS.setForeground(new java.awt.Color(238, 231, 218));
+        RAXIS.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        RAXIS.setFont(new java.awt.Font("Inter", 1, 16)); // NOI18N
+        RAXIS.setLineColor(new java.awt.Color(136, 171, 142));
+        roundedPanel2.add(RAXIS, new org.netbeans.lib.awtextra.AbsoluteConstraints(439, 66, 67, 23));
+
+        jLabel16.setFont(new java.awt.Font("Inter", 1, 16)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(142, 175, 148));
+        jLabel16.setText("ADD");
+        roundedPanel2.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(555, 45, 50, -1));
+
+        RADD.setBackground(new java.awt.Color(136, 171, 142));
+        RADD.setForeground(new java.awt.Color(238, 231, 218));
+        RADD.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        RADD.setFont(new java.awt.Font("Inter", 1, 16)); // NOI18N
+        RADD.setLineColor(new java.awt.Color(136, 171, 142));
+        roundedPanel2.add(RADD, new org.netbeans.lib.awtextra.AbsoluteConstraints(539, 66, 67, 23));
+
+        jLabel17.setFont(new java.awt.Font("Inter", 1, 16)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(142, 175, 148));
+        jLabel17.setText("PD");
+        roundedPanel2.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(662, 45, 50, -1));
+
+        RPD.setBackground(new java.awt.Color(136, 171, 142));
+        RPD.setForeground(new java.awt.Color(238, 231, 218));
+        RPD.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        RPD.setFont(new java.awt.Font("Inter", 1, 16)); // NOI18N
+        RPD.setLineColor(new java.awt.Color(136, 171, 142));
+        roundedPanel2.add(RPD, new org.netbeans.lib.awtextra.AbsoluteConstraints(639, 66, 67, 23));
+
+        jLabel18.setFont(new java.awt.Font("Inter", 1, 16)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(142, 175, 148));
+        jLabel18.setText("SPH");
+        roundedPanel2.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(256, 121, 40, -1));
+
+        jLabel19.setFont(new java.awt.Font("Inter", 1, 16)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(142, 175, 148));
+        jLabel19.setText("CYL");
+        roundedPanel2.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(358, 121, 40, -1));
+
+        jLabel20.setFont(new java.awt.Font("Inter", 1, 16)); // NOI18N
+        jLabel20.setForeground(new java.awt.Color(142, 175, 148));
+        jLabel20.setText("AXIS");
+        roundedPanel2.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(452, 121, 50, -1));
+
+        jLabel21.setFont(new java.awt.Font("Inter", 1, 16)); // NOI18N
+        jLabel21.setForeground(new java.awt.Color(142, 175, 148));
+        jLabel21.setText("ADD");
+        roundedPanel2.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(555, 121, 50, -1));
+
+        jLabel22.setFont(new java.awt.Font("Inter", 1, 16)); // NOI18N
+        jLabel22.setForeground(new java.awt.Color(142, 175, 148));
+        jLabel22.setText("PD");
+        roundedPanel2.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(662, 121, 50, -1));
+
+        LSPH.setBackground(new java.awt.Color(136, 171, 142));
+        LSPH.setForeground(new java.awt.Color(238, 231, 218));
+        LSPH.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        LSPH.setFont(new java.awt.Font("Inter", 1, 16)); // NOI18N
+        LSPH.setLineColor(new java.awt.Color(136, 171, 142));
+        roundedPanel2.add(LSPH, new org.netbeans.lib.awtextra.AbsoluteConstraints(239, 143, 67, 23));
+
+        LCYL.setBackground(new java.awt.Color(136, 171, 142));
+        LCYL.setForeground(new java.awt.Color(238, 231, 218));
+        LCYL.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        LCYL.setFont(new java.awt.Font("Inter", 1, 16)); // NOI18N
+        LCYL.setLineColor(new java.awt.Color(136, 171, 142));
+        roundedPanel2.add(LCYL, new org.netbeans.lib.awtextra.AbsoluteConstraints(339, 143, 67, 23));
+
+        LAXIS.setBackground(new java.awt.Color(136, 171, 142));
+        LAXIS.setForeground(new java.awt.Color(238, 231, 218));
+        LAXIS.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        LAXIS.setFont(new java.awt.Font("Inter", 1, 16)); // NOI18N
+        LAXIS.setLineColor(new java.awt.Color(136, 171, 142));
+        roundedPanel2.add(LAXIS, new org.netbeans.lib.awtextra.AbsoluteConstraints(439, 143, 67, 23));
+
+        LADD.setBackground(new java.awt.Color(136, 171, 142));
+        LADD.setForeground(new java.awt.Color(238, 231, 218));
+        LADD.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        LADD.setFont(new java.awt.Font("Inter", 1, 16)); // NOI18N
+        LADD.setLineColor(new java.awt.Color(136, 171, 142));
+        roundedPanel2.add(LADD, new org.netbeans.lib.awtextra.AbsoluteConstraints(539, 143, 67, 23));
+
+        LPD.setBackground(new java.awt.Color(136, 171, 142));
+        LPD.setForeground(new java.awt.Color(238, 231, 218));
+        LPD.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        LPD.setFont(new java.awt.Font("Inter", 1, 16)); // NOI18N
+        LPD.setLineColor(new java.awt.Color(136, 171, 142));
+        roundedPanel2.add(LPD, new org.netbeans.lib.awtextra.AbsoluteConstraints(639, 143, 67, 23));
+
+        roundedPanel1.add(roundedPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 541, 750, 214));
+
+        rblaki.setBackground(new java.awt.Color(136, 171, 142));
+        btjeniskelamin.add(rblaki);
+        rblaki.setFont(new java.awt.Font("Inter", 1, 16)); // NOI18N
+        rblaki.setForeground(new java.awt.Color(238, 231, 218));
+        rblaki.setText("Laki-laki");
+        roundedPanel1.add(rblaki, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 207, -1, -1));
+
+        rbperempuan.setBackground(new java.awt.Color(136, 171, 142));
+        btjeniskelamin.add(rbperempuan);
+        rbperempuan.setFont(new java.awt.Font("Inter", 1, 16)); // NOI18N
+        rbperempuan.setForeground(new java.awt.Color(238, 231, 218));
+        rbperempuan.setText("Perempuan");
+        roundedPanel1.add(rbperempuan, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 207, -1, -1));
+
+        jPanel1.add(roundedPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(55, 104, 1175, 920));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, -30, -1, -1));
+
+        jScrollPane3.setViewportView(jPanel1);
+
+        getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 832));
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void kontakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kontakActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_kontakActionPerformed
-
     private void addDataButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addDataButtonActionPerformed
         Connection conn = new koneksi().getConnection();
         
-        String sql = "insert into pelanggan(nama_pelanggan, kontak, alamat) values (?,?,?)";
+        String sql = "insert into pelanggan(nama_pelanggan, jenis_kelamin, usia, kontak, alamat) values (?,?,?,?,?)";
+        String sql2 = "select id from pelanggan where nama_pelanggan = '" + nama.getText() + "' and alamat = '" + alamat.getText() + "'";
+        String sql3 = "insert into ukuran_mata(id_pelanggan, rsph, rcyl, raxis, radd, rpd, lsph, lcyl, laxis, ladd, lpd) "
+                      + "values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"; 
         
+        int id_pelanggan = 0;
+        String jenisKelamin = "";
+
+        if (rblaki.isSelected()) {
+            jenisKelamin = "Laki-laki";
+        } else if (rbperempuan.isSelected()) {
+            jenisKelamin = "Perempuan";
+        }
         try{
             PreparedStatement stat = conn.prepareStatement(sql);
             stat.setString(1, nama.getText());
-            stat.setString(2, kontak.getText());
-            stat.setString(3, alamat.getText());
+            stat.setString(2, jenisKelamin);
+            stat.setString(3, usia.getText());
+            stat.setString(4, kontak.getText());
+            stat.setString(5, alamat.getText());
 
             stat.executeUpdate();
+            
+            
+            PreparedStatement stat2 = conn.prepareStatement(sql2);
+            ResultSet hasil = stat2.executeQuery();
+            hasil.next();
+            id_pelanggan = hasil.getInt(1);
+            
+            
+            PreparedStatement stat3 = conn.prepareStatement(sql3);
+            stat3.setInt(1, id_pelanggan);
+            stat3.setString(2, RSPH.getText());
+            stat3.setString(3, RCYL.getText());
+            stat3.setString(4, RAXIS.getText());
+            stat3.setString(5, RADD.getText());
+            stat3.setString(6, RPD.getText());
+            stat3.setString(7, LSPH.getText());
+            stat3.setString(8, LCYL.getText());
+            stat3.setString(9, LAXIS.getText());
+            stat3.setString(10, LADD.getText());
+            stat3.setString(11, LPD.getText());
+            
+            stat3.executeUpdate();
             JOptionPane.showMessageDialog(null, "data berhasil disimpan");
             kosong();
             nama.requestFocus();
@@ -262,20 +504,52 @@ public class TambahPelanggan extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private custom_palette.RoundedTextField LADD;
+    private custom_palette.RoundedTextField LAXIS;
+    private custom_palette.RoundedTextField LCYL;
+    private custom_palette.RoundedTextField LPD;
+    private custom_palette.RoundedTextField LSPH;
+    private custom_palette.RoundedTextField RADD;
+    private custom_palette.RoundedTextField RAXIS;
+    private custom_palette.RoundedTextField RCYL;
+    private custom_palette.RoundedTextField RPD;
+    private custom_palette.RoundedTextField RSPH;
     private custom_palette.RoundedButton addDataButton;
     private javax.swing.JTextArea alamat;
+    private javax.swing.ButtonGroup btjeniskelamin;
     private custom_palette.RoundedButton cancelButton;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private custom_palette.RoundedTextField kontak;
     private custom_palette.RoundedTextField nama;
+    private javax.swing.JRadioButton rblaki;
+    private javax.swing.JRadioButton rbperempuan;
     private custom_palette.RoundedPanel roundedPanel1;
+    private custom_palette.RoundedPanel roundedPanel2;
+    private custom_palette.RoundedTextField usia;
     // End of variables declaration//GEN-END:variables
 }

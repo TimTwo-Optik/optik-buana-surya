@@ -9,6 +9,7 @@ import custom_palette.TableActionCellEditor;
 import custom_palette.TableActionCellRender;
 import custom_palette.TableActionEvent;
 import form.RincianDataPelanggan;
+import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -21,6 +22,7 @@ import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.table.DefaultTableModel;
 import koneksi.koneksi;
 import net.sf.jasperreports.engine.JasperCompileManager;
@@ -413,6 +415,15 @@ public class pelanggan extends javax.swing.JFrame {
 
     private void addDataButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addDataButtonActionPerformed
         try {
+            try {
+                UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+            } catch (UnsupportedLookAndFeelException ignored) {
+                Toolkit.getDefaultToolkit().beep();
+            } catch (ClassNotFoundException | InstantiationException | IllegalAccessException ex) {
+                ex.printStackTrace();
+                return;
+            }
+            
             // Buat objek JFrame baru
             JFrame formTambahPelanggan = new form.TambahPelanggan();
 
