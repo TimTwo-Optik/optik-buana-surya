@@ -53,17 +53,13 @@ public class pelanggan extends javax.swing.JFrame {
     protected void dataTable() {
         Connection conn = koneksi.getConnection();
         
-        Object[] Baris ={"ID","Nama Pelanggan","Kontak","Alamat","Total Pengeluaran", "Status", "Aksi"};
+        Object[] Baris ={"ID", "Nama Pelanggan", "Jenis Kelamin", "Usia", "Kontak", "Alamat", "Aksi"};
         tabmode = new DefaultTableModel(null, Baris);
         String cariItem = searchBar.getText();
         
         try {
-       String sql = "SELECT p.id, p.nama_pelanggan, p.kontak, p.alamat, COALESCE(SUM(dj.total_harga), 0), p.status " +
-                "FROM pelanggan p " +
-                "LEFT JOIN penjualan pj ON p.id = pj.id_pelanggan " +
-                "LEFT JOIN detail_penjualan dj ON pj.id = dj.id_penjualan " +
+        String sql = "SELECT * FROM pelanggan AS p " +
                 "WHERE p.nama_pelanggan LIKE ? " +
-                "GROUP BY p.id, p.nama_pelanggan " +
                 "ORDER BY p.id ASC";
 
             PreparedStatement stat = conn.prepareStatement(sql);
@@ -71,21 +67,13 @@ public class pelanggan extends javax.swing.JFrame {
             
             ResultSet hasil = stat.executeQuery();
             while (hasil.next()){
-                String kolomStatus = "";
-                
-                if(hasil.getString(6).equals("1")) {
-                    kolomStatus = "Aktif";
-                } else {
-                    kolomStatus = "Tidak Aktif";
-                }
-                
                 tabmode.addRow(new Object[]{ 
                     hasil.getString(1),
                     hasil.getString(2),
                     hasil.getString(3),
                     hasil.getString(4),
                     hasil.getString(5),
-                    kolomStatus,
+                    hasil.getString(6)
 
                 });
             }  
@@ -311,7 +299,7 @@ public class pelanggan extends javax.swing.JFrame {
 
         searchFilter.setFont(new java.awt.Font("Inter", 0, 15)); // NOI18N
         searchFilter.setForeground(new java.awt.Color(175, 200, 173));
-        searchFilter.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Urutkan", "A-Z", "Z-A", "Total Transaksi", "Tertinggi", "Terendah" }));
+        searchFilter.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Urutkan", "A-Z", "Z-A" }));
         searchFilter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 searchFilterActionPerformed(evt);
@@ -601,46 +589,26 @@ public class pelanggan extends javax.swing.JFrame {
                 case 2:
                     order = "ORDER BY p.nama_pelanggan DESC";
                     break;
-                case 4:
-                    order = "ORDER BY COALESCE(SUM(dj.total_harga), 0) DESC";
-                    break;
-                case 5:
-                    order = "ORDER BY COALESCE(SUM(dj.total_harga), 0) ASC";
-                    break;
             }
 
             Connection conn = new koneksi().getConnection();
 
-        Object[] Baris ={"ID","Nama Pelanggan","Kontak","Alamat","Total Pengeluaran", "Status", "Aksi"};
+            Object[] Baris ={"ID", "Nama Pelanggan", "Jenis Kelamin", "Usia", "Kontak", "Alamat", "Aksi"};
             tabmode = new DefaultTableModel(null, Baris);
 
             try {
-                String sql = "SELECT p.id, p.nama_pelanggan, p.kontak, p.alamat, COALESCE(SUM(dj.total_harga), 0), p.status "
-                        + "FROM pelanggan p "
-                        + "LEFT JOIN penjualan pj ON p.id = pj.id_pelanggan "
-                        + "LEFT JOIN detail_penjualan dj ON pj.id = dj.id_penjualan "
-                        + "GROUP BY p.id, p.nama_pelanggan "
-                        + order;
+                String sql = "SELECT * FROM pelanggan p " + order;
                 PreparedStatement stat = conn.prepareStatement(sql);
 
                 ResultSet hasil = stat.executeQuery();
                 while (hasil.next()){
-                    String kolomStatus = "";
-
-                    if(hasil.getString(6).equals("1")) {
-                        kolomStatus = "Aktif";
-                    } else {
-                        kolomStatus = "Tidak Aktif";
-                    }
-  
-
                     tabmode.addRow(new Object[]{
                         hasil.getString(1),
                         hasil.getString(2),
                         hasil.getString(3),
                         hasil.getString(4),
                         hasil.getString(5),
-                        kolomStatus,
+                        hasil.getString(6)
                         
                     });
                 }  
@@ -698,7 +666,6 @@ public class pelanggan extends javax.swing.JFrame {
       private void initializeComboBox() {
         ArrayList<Integer> targetIndices = new ArrayList<>();
         targetIndices.add(0);
-        targetIndices.add(3);
         
         searchFilter.setRenderer(new ComboBoxListCellRender(targetIndices));
         
