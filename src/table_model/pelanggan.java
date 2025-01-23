@@ -415,14 +415,7 @@ public class pelanggan extends javax.swing.JFrame {
 
     private void addDataButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addDataButtonActionPerformed
         try {
-            try {
-                UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-            } catch (UnsupportedLookAndFeelException ignored) {
-                Toolkit.getDefaultToolkit().beep();
-            } catch (ClassNotFoundException | InstantiationException | IllegalAccessException ex) {
-                ex.printStackTrace();
-                return;
-            }
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
             
             // Buat objek JFrame baru
             JFrame formTambahPelanggan = new form.TambahPelanggan();
@@ -646,14 +639,8 @@ public class pelanggan extends javax.swing.JFrame {
     }//GEN-LAST:event_cetakActionPerformed
 
       private void sendData(int row) {
-        String[] values = new String[5];
         
         int id = Integer.parseInt(tabmode.getValueAt(row, 0).toString());
-        
-    
-        for(int i = 0; i < 5; i++){
-            values[i] = tabmode.getValueAt(row, i+1).toString();
-        }
         
         try {
             // Mengatur look and feel kembali ke default
@@ -662,7 +649,7 @@ public class pelanggan extends javax.swing.JFrame {
             // Buat objek JFrame baru
             RincianDataPelanggan formUbahPelanggan = new form.RincianDataPelanggan();
             
-            formUbahPelanggan.setData(id, values);
+            formUbahPelanggan.setData(id);
 
             // Tampilkan JFrame baru
             formUbahPelanggan.setVisible(true);
