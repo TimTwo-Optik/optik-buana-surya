@@ -444,8 +444,8 @@ public class pembelian extends javax.swing.JFrame {
 
             switch (filter) {
                 case 1:
-                    sql = "SELECT pbl.id AS 'No Faktur', pbl.tanggal_beli AS 'Tanggal Beli', sup.nama_supplier AS 'Nama Supplier', "
-                            + "brg.nama AS 'Nama Barang', pbl.kuantitas AS 'Kuantitas', pbl.total_harga AS 'Total Harga', pbl.status AS 'Status' "
+                    sql = "SELECT pbl.no_faktur, pbl.tanggal_beli, sup.nama_supplier, brg.kategori, brg.nama, "
+                            + "brg.jenis_atau_lensa, pbl.kuantitas, brg.harga_beli, pbl.total_harga, brg.keterangan, pbl.status "
                             + "FROM pembelian AS pbl "
                             + "JOIN suppliers AS sup ON pbl.id_supplier = sup.id "
                             + "JOIN barang AS brg ON pbl.id_barang = brg.id "
@@ -453,8 +453,8 @@ public class pembelian extends javax.swing.JFrame {
                             + "ORDER BY pbl.id ASC";
                     break;
                 case 2:
-                    sql = "SELECT pbl.id AS 'No Faktur', pbl.tanggal_beli AS 'Tanggal Beli', sup.nama_supplier AS 'Nama Supplier', "
-                            + "brg.nama AS 'Nama Barang', pbl.kuantitas AS 'Kuantitas', pbl.total_harga AS 'Total Harga', pbl.status AS 'Status' "
+                    sql = "SELECT pbl.no_faktur, pbl.tanggal_beli, sup.nama_supplier, brg.kategori, brg.nama, "
+                            + "brg.jenis_atau_lensa, pbl.kuantitas, brg.harga_beli, pbl.total_harga, brg.keterangan, pbl.status "
                             + "FROM pembelian AS pbl "
                             + "JOIN suppliers AS sup ON pbl.id_supplier = sup.id "
                             + "JOIN barang AS brg ON pbl.id_barang = brg.id "
@@ -466,8 +466,8 @@ public class pembelian extends javax.swing.JFrame {
                     int currentMonth = currentDate.getMonthValue();
                     int currentYear = currentDate.getYear();
 
-                    sql = "SELECT pbl.id AS 'No Faktur', pbl.tanggal_beli AS 'Tanggal Beli', sup.nama_supplier AS 'Nama Supplier', "
-                            + "brg.nama AS 'Nama Barang', pbl.kuantitas AS 'Kuantitas', pbl.total_harga AS 'Total Harga', pbl.status AS 'Status' "
+                    sql = "SELECT pbl.no_faktur, pbl.tanggal_beli, sup.nama_supplier, brg.kategori, brg.nama, "
+                            + "brg.jenis_atau_lensa, pbl.kuantitas, brg.harga_beli, pbl.total_harga, brg.keterangan, pbl.status "
                             + "FROM pembelian AS pbl "
                             + "JOIN suppliers AS sup ON pbl.id_supplier = sup.id "
                             + "JOIN barang AS brg ON pbl.id_barang = brg.id "
@@ -475,8 +475,8 @@ public class pembelian extends javax.swing.JFrame {
                             + "ORDER BY pbl.id ASC";
                     break;
                 case 5:
-                    sql = "SELECT pbl.id AS 'No Faktur', pbl.tanggal_beli AS 'Tanggal Beli', sup.nama_supplier AS 'Nama Supplier', "
-                            + "brg.nama AS 'Nama Barang', pbl.kuantitas AS 'Kuantitas', pbl.total_harga AS 'Total Harga', pbl.status AS 'Status' "
+                    sql = "SELECT pbl.no_faktur, pbl.tanggal_beli, sup.nama_supplier, brg.kategori, brg.nama, "
+                            + "brg.jenis_atau_lensa, pbl.kuantitas, brg.harga_beli, pbl.total_harga, brg.keterangan, pbl.status "
                             + "FROM pembelian AS pbl "
                             + "JOIN suppliers AS sup ON pbl.id_supplier = sup.id "
                             + "JOIN barang AS brg ON pbl.id_barang = brg.id "
@@ -484,8 +484,8 @@ public class pembelian extends javax.swing.JFrame {
                             + "ORDER BY pbl.id ASC";
                     break;
                 case 6:
-                    sql = "SELECT pbl.id AS 'No Faktur', pbl.tanggal_beli AS 'Tanggal Beli', sup.nama_supplier AS 'Nama Supplier', "
-                            + "brg.nama AS 'Nama Barang', pbl.kuantitas AS 'Kuantitas', pbl.total_harga AS 'Total Harga', pbl.status AS 'Status' "
+                    sql = "SELECT pbl.no_faktur, pbl.tanggal_beli, sup.nama_supplier, brg.kategori, brg.nama, "
+                            + "brg.jenis_atau_lensa, pbl.kuantitas, brg.harga_beli, pbl.total_harga, brg.keterangan, pbl.status "
                             + "FROM pembelian AS pbl "
                             + "JOIN suppliers AS sup ON pbl.id_supplier = sup.id "
                             + "JOIN barang AS brg ON pbl.id_barang = brg.id "
@@ -493,16 +493,16 @@ public class pembelian extends javax.swing.JFrame {
                             + "ORDER BY pbl.id ASC";
                     break;
                 case 8:
-                    sql = "SELECT pbl.id AS 'No Faktur', pbl.tanggal_beli AS 'Tanggal Beli', sup.nama_supplier AS 'Nama Supplier', "
-                            + "brg.nama AS 'Nama Barang', pbl.kuantitas AS 'Kuantitas', pbl.total_harga AS 'Total Harga', pbl.status AS 'Status' "
+                    sql = "SELECT pbl.no_faktur, pbl.tanggal_beli, sup.nama_supplier, brg.kategori, brg.nama, "
+                            + "brg.jenis_atau_lensa, pbl.kuantitas, brg.harga_beli, pbl.total_harga, brg.keterangan, pbl.status "
                             + "FROM pembelian AS pbl "
                             + "JOIN suppliers AS sup ON pbl.id_supplier = sup.id "
                             + "JOIN barang AS brg ON pbl.id_barang = brg.id "
                             + "ORDER BY pbl.total_harga DESC";
                     break;
                 case 9:
-                    sql = "SELECT pbl.id AS 'No Faktur', pbl.tanggal_beli AS 'Tanggal Beli', sup.nama_supplier AS 'Nama Supplier', "
-                            + "brg.nama AS 'Nama Barang', pbl.kuantitas AS 'Kuantitas', pbl.total_harga AS 'Total Harga', pbl.status AS 'Status' "
+                    sql = "SELECT pbl.no_faktur, pbl.tanggal_beli, sup.nama_supplier, brg.kategori, brg.nama, "
+                            + "brg.jenis_atau_lensa, pbl.kuantitas, brg.harga_beli, pbl.total_harga, brg.keterangan, pbl.status "
                             + "FROM pembelian AS pbl "
                             + "JOIN suppliers AS sup ON pbl.id_supplier = sup.id "
                             + "JOIN barang AS brg ON pbl.id_barang = brg.id "
@@ -512,7 +512,7 @@ public class pembelian extends javax.swing.JFrame {
 
             Connection conn = new koneksi().getConnection();
 
-            Object[] Baris = {"No Faktur", "Tanggal Beli", "Nama Supplier", "Nama Barang", "Kuantitas", "Total Harga", "Status", "Aksi"};
+            Object[] Baris = {"No Faktur", "Tgl Beli", "Nama Supplier", "Kategori", "Nama/Merk", "Jenis Barang/Lensa", "QTY", "Harga Per Unit", "Total Transaksi", "Keterangan", "Status", "Aksi"};
             tabmode = new DefaultTableModel(null, Baris);
 
             try {
@@ -527,6 +527,10 @@ public class pembelian extends javax.swing.JFrame {
                         hasil.getString(5),
                         hasil.getString(6),
                         hasil.getString(7),
+                        hasil.getString(8),
+                        hasil.getString(9),
+                        hasil.getString(10),
+                        hasil.getString(11),
                     });
                 }
                 tablepembelian.setModel(tabmode);
