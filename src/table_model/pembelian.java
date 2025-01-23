@@ -63,17 +63,17 @@ public class pembelian extends javax.swing.JFrame {
     protected void dataTable() {
         Connection conn = koneksi.getConnection();
 
-        Object[] Baris = {"No Faktur", "Tanggal Beli", "Nama Supplier", "Nama Barang", "Kuantitas", "Total Harga", "Status", "Aksi"};
+        Object[] Baris = {"No Faktur", "Tgl Beli", "Nama Supplier", "Kategori", "Nama/Merk", "Jenis Barang/Lensa", "QTY", "Harga Per Unit", "Total Transaksi", "Keterangan", "Status", "Aksi"};
         tabmode = new DefaultTableModel(null, Baris);
         String cariItem = searchBar.getText();
 
         try {
-            String sql = "SELECT pbl.id AS 'No Faktur', pbl.tanggal_beli AS 'Tanggal Beli', sup.nama_supplier AS 'Nama Supplier', "
-                    + "brg.nama AS 'Nama Barang', pbl.kuantitas AS 'Kuantitas', pbl.total_harga AS 'Total Harga', pbl.status AS 'Status' "
+            String sql = "SELECT pbl.no_faktur, pbl.tanggal_beli, sup.nama_supplier, brg.kategori, brg.nama, "
+                    + "brg.jenis_atau_lensa, pbl.kuantitas, brg.harga_beli, pbl.total_harga, brg.keterangan, pbl.status "
                     + "FROM pembelian AS pbl "
                     + "JOIN suppliers AS sup ON pbl.id_supplier = sup.id "
                     + "JOIN barang AS brg ON pbl.id_barang = brg.id "
-                    + "WHERE pbl.id LIKE ? OR brg.nama LIKE ? "
+                    + "WHERE pbl.no_faktur LIKE ? OR brg.nama LIKE ? "
                     + "ORDER BY pbl.id ASC";
 
             PreparedStatement stat = conn.prepareStatement(sql);
@@ -90,6 +90,10 @@ public class pembelian extends javax.swing.JFrame {
                     hasil.getString(5),
                     hasil.getString(6),
                     hasil.getString(7),
+                    hasil.getString(8),
+                    hasil.getString(9),
+                    hasil.getString(10),
+                    hasil.getString(11),
                 });
             }
             tablepembelian.setModel(tabmode);
@@ -118,8 +122,8 @@ public class pembelian extends javax.swing.JFrame {
             }
         };
 
-        tablepembelian.getColumnModel().getColumn(7).setCellRenderer(new TableActionCellRender());
-        tablepembelian.getColumnModel().getColumn(7).setCellEditor(new TableActionCellEditor(event));
+        tablepembelian.getColumnModel().getColumn(11).setCellRenderer(new TableActionCellRender());
+        tablepembelian.getColumnModel().getColumn(11).setCellEditor(new TableActionCellEditor(event));
         tablepembelian.setDefaultRenderer(String.class, new TableActionCellRender());
 
     }
@@ -278,17 +282,17 @@ public class pembelian extends javax.swing.JFrame {
 
         tablepembelian.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4", "Title 5", "Title 6", "null", "null"
+                "Title 1", "Title 2", "Title 3", "Title 4", "Title 5", "Title 6", "null", "null", "null", "null", "null", "null"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, true, false, false, false, false, true
+                false, false, false, false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
