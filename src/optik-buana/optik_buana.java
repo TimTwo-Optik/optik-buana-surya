@@ -9,7 +9,7 @@ package timtwo_optik;
  *
  * @author Bagus
  */
-public class timtwo_optik {
+public class optik_buana {
 
     /**
      * @param args the command line arguments
