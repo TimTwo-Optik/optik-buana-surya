@@ -56,17 +56,22 @@ public class home extends javax.swing.JFrame {
     protected void incomeTable() {
         Connection conn = koneksi.getConnection();
         
-        Object[] Baris ={"ID", "tanggal", "Nama Barang", "kuantitas", "total harga", "status"};
+        Object[] Baris ={"ID", "Tanggal", "Nama Barang", "Kuantitas", "Total Harga", "Status", "Laba"};
         tabmode = new DefaultTableModel(null, Baris);
         
         try {
-            String sql = "SELECT p.id, p.tanggal_jual, b.nama, dp.kuantitas, dp.total_harga, p.status "+
+            String sql = "SELECT p.no_faktur, p.tanggal_jual, b.nama, dp.kuantitas, dp.total_harga, p.status, b.harga_beli, b.harga_jual "+
                     "FROM detail_penjualan AS dp JOIN barang AS b ON dp.id_barang = b.id " +
-                    "JOIN penjualan AS p ON dp.id_penjualan = p.id";
+                    "JOIN penjualan AS p ON dp.id_penjualan = p.no_faktur";
             Statement stat = conn.createStatement();
             
             ResultSet hasil = stat.executeQuery(sql);
             while (hasil.next()){
+                int kuantitas = hasil.getInt(4);
+                int harga_beli = hasil.getInt(7);
+                int harga_jual = hasil.getInt(8);
+                int laba = kuantitas * (harga_jual - harga_beli);
+                
                 tabmode.addRow(new Object[]{    
                     hasil.getString(1),
                     hasil.getString(2),
@@ -74,6 +79,7 @@ public class home extends javax.swing.JFrame {
                     hasil.getString(4),
                     hasil.getString(5),
                     hasil.getString(6),
+                    laba,
                 });
             }  
             incomeTable.setModel(tabmode);
@@ -90,11 +96,12 @@ public class home extends javax.swing.JFrame {
     protected void expenseTable() {
         Connection conn = koneksi.getConnection();
         
-        Object[] Baris ={"ID","tanggal", "Nama Barang", "kuantitas", "total harga", "status"};
+        Object[] Baris ={"ID", "Tanggal", "Nama Barang", "Kuantitas", "Total Harga", "Status"};
         tabmode = new DefaultTableModel(null, Baris);
         
         try {
-            String sql = "SELECT p.id, p.tanggal_beli, b.nama, p.kuantitas, p.total_harga, p.status FROM pembelian AS p JOIN barang AS b ON b.id = p.id_barang";
+            String sql = "SELECT p.id, p.tanggal_beli, b.nama, p.kuantitas, p.total_harga, p.status "
+                        + "FROM pembelian AS p JOIN barang AS b ON b.id = p.id_barang";
             Statement stat = conn.createStatement();
             
             ResultSet hasil = stat.executeQuery(sql);
@@ -127,8 +134,8 @@ public class home extends javax.swing.JFrame {
             String currentYear = cbtahun.getSelectedItem().toString();
             
             String sql = "SELECT MONTH(p.tanggal_jual) AS bulan, SUM(dp.total_harga) AS total_penjualan_per_bulan " +
-                         "FROM penjualan AS P " +
-                         "JOIN detail_penjualan AS dp ON p.id = dp.id_penjualan " +
+                         "FROM penjualan AS p " +
+                         "JOIN detail_penjualan AS dp ON p.no_faktur = dp.id_penjualan " +
                          "WHERE YEAR(tanggal_jual) = " + currentYear + " " +
                          "GROUP BY bulan " +
                          "ORDER BY bulan";
