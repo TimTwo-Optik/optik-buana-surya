@@ -129,7 +129,7 @@ public class pembelian extends javax.swing.JFrame {
     }
     
     private void sendData(int row) {
-        int id = Integer.parseInt(tabmode.getValueAt(row, 0).toString());
+        String id = tabmode.getValueAt(row, 0).toString();
         
         try {
             // Mengatur look and feel kembali ke default
